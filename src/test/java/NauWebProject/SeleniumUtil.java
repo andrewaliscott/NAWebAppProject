@@ -2,11 +2,13 @@ package NauWebProject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.io.IOException;
 import java.util.List;
 
 public class SeleniumUtil {
+    public static Actions actions;
 
     public void goToPage(String url) throws IOException {
         Driver.getDriver().get(Driver.prop(url));
@@ -39,5 +41,9 @@ public class SeleniumUtil {
 
     public List<WebElement> findElements(By locator) {
         return Driver.driver.findElements(locator);
+    }
+
+    public static Actions getActions () {
+        return actions =new Actions ( Driver.getDriver () );
     }
 }
