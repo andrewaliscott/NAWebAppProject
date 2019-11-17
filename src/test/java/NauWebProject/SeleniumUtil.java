@@ -32,12 +32,12 @@ public class SeleniumUtil {
         findElement(locator).sendKeys(text);
     }
 
-    public void getText(By locator) {
-        findElement(locator).getText();
+    public String getText(By locator) {
+        return findElement(locator).getText();
     }
 
-    public void isDisplayed(By locator) {
-        findElement(locator).isDisplayed();
+    public boolean isDisplayed(By locator) {
+        return findElement(locator).isDisplayed();
     }
 
     public List<WebElement> findElements(By locator) {
