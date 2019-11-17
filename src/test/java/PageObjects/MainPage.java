@@ -8,13 +8,5 @@ import java.io.IOException;
 
 public class MainPage extends Base {
 
-    private By requestInfoLocator = By.id("");
 
-
-    public void goToRequest() throws IOException {
-    }
-
-    public void mouseOverElement() {
-
-    }
 }

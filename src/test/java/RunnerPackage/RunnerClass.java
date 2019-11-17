@@ -6,7 +6,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features="src/test/java/FeatureFiles",
-        glue="StepDefinitionFiles"
+        glue="StepDefinitionFiles.HYMain", tags = {"HY","Smoke"}
 )
 
 public class RunnerClass {
