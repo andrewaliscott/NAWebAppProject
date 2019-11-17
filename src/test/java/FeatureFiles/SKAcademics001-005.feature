@@ -1,9 +1,9 @@
 Feature:SKAcademics001-005
   Scenario: Functionality of Academics web link
-    Given User navigates the main page
+    Given User navigates the main page "<urlMain>"
     When User clicks Academics menu
-    Then User will be able to navigate to "urlAcademics"
-    And User will be able to see logo of NAU
+    Then User will be able to navigate to "<urlAcademics>"
+    And User will be able to see the text of "Committed to the pursuit of academic excellence"
 
   Scenario: Functionality of NAU web link on Academics page
     Given User navigates the main page
