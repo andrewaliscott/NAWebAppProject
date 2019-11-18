@@ -10,7 +10,7 @@ import org.junit.Assert;
 
 public class HYMainUS01 extends Base {
 
-    Main main = new Main();
+    private Main main = new Main();
 
     @Given("^User navigates to page \"([^\"]*)\"$")
     public void user_navigates_to_page(String arg1) throws Throwable {
@@ -41,8 +41,8 @@ public class HYMainUS01 extends Base {
 
     @Then("^User should navigate to page \"([^\"]*)\"$")
     public void user_should_navigate_to_page(String arg1) throws Throwable {
-        System.out.println("actual : "+seleniumUtil.getUrl());
-        System.out.println("expected : "+Driver.getProp(arg1));
+        System.out.println("actual : " + seleniumUtil.getUrl());
+        System.out.println("expected : " + Driver.getProp(arg1));
 
         Assert.assertEquals(Driver.getProp(arg1),seleniumUtil.getUrl());
     }
