@@ -1,4 +1,4 @@
 package StepDefinitionFiles;
 
-public class KGFacultiyUS01 {
+public class KGFaculty {
 }

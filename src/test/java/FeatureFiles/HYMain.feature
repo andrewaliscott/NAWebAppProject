@@ -33,8 +33,15 @@ Feature: HY-Main Page Functionality
     When User clicks on "portal" button
     Then User should navigate to page "portal"
 
-  Scenario: Verifying Search Input Box in main page
+  @Test
+  Scenario: Verifying location of Search Input Box in main page
     Given User navigates to page "main"
-    When User type on "search" box
-    Then Color of "request" button should change
-    And "request" should be a link
+    When User sees "search" box on right side of menu bar
+    Then "search" box should hold "placeholder" watermark
+
+  @Test
+  Scenario: Verifying functionality of Search Input Box in main page
+    Given User navigates to page "main"
+    When User types "something" on "search" box
+    And User clicks on "search" button
+    Then User should navigate to page "search"

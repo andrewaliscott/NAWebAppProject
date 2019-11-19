@@ -1,4 +1,4 @@
 package StepDefinitionFiles;
 
-public class BSCampusUS01 {
+public class BSCampus {
 }

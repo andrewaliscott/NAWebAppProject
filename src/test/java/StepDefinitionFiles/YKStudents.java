@@ -1,4 +1,4 @@
 package StepDefinitionFiles;
 
-public class YKStudentsUS01 {
+public class YKStudents {
 }

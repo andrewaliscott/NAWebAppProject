@@ -1,6 +1,7 @@
 package NauWebProject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -24,6 +25,10 @@ public class SeleniumUtil {
 
     public void click(By locator) {
         findElement(locator).click();
+    }
+
+    public void enter(By locator) {
+        findElement(locator).sendKeys(Keys.ENTER);
     }
 
     public void clear(By locator) {

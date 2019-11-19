@@ -1,4 +1,4 @@
 package StepDefinitionFiles;
 
-public class SKAcademicsUS01 {
+public class SKAcademics {
 }

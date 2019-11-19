@@ -12,6 +12,7 @@ public class Main extends Base {
     private By applyL = By.xpath("//span[text()='Apply Now']/..");
     private By portalL = By.xpath("//span[text()='365 Portal']/..");
     private By logoL = By.cssSelector("img[alt='North American University Logo']");
+    private By searchL = By.cssSelector(".ubermenu-search-input");
 
     public void mouseOver(String locator) {
         seleniumUtil.getActions().moveToElement(getElement(locator)).build().perform();
@@ -50,4 +51,30 @@ public class Main extends Base {
         return element;
     }
 
+    public By getLocator(String locator) {
+
+        By locatorL = null;
+        switch (locator) {
+            case "request" : locatorL = requestL; break;
+            case "apply" : locatorL = applyL; break;
+            case "portal" : locatorL = portalL; break;
+            case "search" : locatorL = searchL; break;
+        }
+        return locatorL;
+    }
+
+    public void inputKey(String input, String locator) {
+        seleniumUtil.sendKeys(getLocator(locator),input);
+    }
+
+    public void verifyInput(String locator) {
+
+        String text = seleniumUtil.findElement(getLocator(locator)).getAttribute("placeholder");
+        System.out.println("input value : "+text);
+
+    }
+
+    public void verifyWatermark(String locator, String text) {
+        System.out.println(seleniumUtil.findElement(getLocator(locator)).getAttribute(text));
+    }
 }

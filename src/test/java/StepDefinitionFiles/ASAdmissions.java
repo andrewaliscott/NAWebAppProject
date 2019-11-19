@@ -1,4 +1,4 @@
 package StepDefinitionFiles;
 
-public class ASAdmissionsUS01 {
+public class ASAdmissions {
 }
