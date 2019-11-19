@@ -1,4 +1,4 @@
-Feature: HY-MAIN-US001
+Feature: HY-Main Page Functionality
 
   Scenario: Verifying Request Info Button in main page
     Given User navigates to page "main"
@@ -32,3 +32,9 @@ Feature: HY-MAIN-US001
     Given User navigates to page "main"
     When User clicks on "portal" button
     Then User should navigate to page "portal"
+
+  Scenario: Verifying Search Input Box in main page
+    Given User navigates to page "main"
+    When User type on "search" box
+    Then Color of "request" button should change
+    And "request" should be a link
