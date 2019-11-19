@@ -36,7 +36,7 @@ public class Driver {
 
     public static String getProp(String url) throws IOException {
         prop = new Properties();
-        FileInputStream fis=new FileInputStream("src\\test\\java\\NauWebProject\\global.properties");
+        FileInputStream fis=new FileInputStream("src/test/java/NauWebProject/global.properties");
         prop.load(fis);
         return prop.getProperty(url);
     }
