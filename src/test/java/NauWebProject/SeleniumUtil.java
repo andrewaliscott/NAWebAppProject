@@ -13,8 +13,6 @@ import java.util.List;
 
 public class SeleniumUtil {
 
-    public Actions actions;
-
     public void goToPage(String url) throws IOException {
         Driver.getDriver().get(Driver.getProp(url));
     }
@@ -53,7 +51,7 @@ public class SeleniumUtil {
     }
 
     public Actions getActions() {
-        return actions = new Actions(Driver.getDriver());
+        return new Actions(Driver.getDriver());
     }
 
     public String getUrl() {
