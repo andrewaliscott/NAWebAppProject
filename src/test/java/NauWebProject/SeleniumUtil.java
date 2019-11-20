@@ -1,15 +1,19 @@
 package NauWebProject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.util.List;
 
 public class SeleniumUtil {
 
-    public static Actions actions;
+    public Actions actions;
 
     public void goToPage(String url) throws IOException {
         Driver.getDriver().get(Driver.getProp(url));
@@ -21,6 +25,10 @@ public class SeleniumUtil {
 
     public void click(By locator) {
         findElement(locator).click();
+    }
+
+    public void enter(By locator) {
+        findElement(locator).sendKeys(Keys.ENTER);
     }
 
     public void clear(By locator) {
@@ -44,11 +52,26 @@ public class SeleniumUtil {
         return Driver.driver.findElements(locator);
     }
 
-    public static Actions getActions() {
+    public Actions getActions() {
         return actions = new Actions(Driver.getDriver());
     }
 
     public String getUrl() {
         return Driver.getDriver().getCurrentUrl();
+    }
+
+    public WebDriverWait waitFor(){
+        return new WebDriverWait(Driver.getDriver(),10);
+    }
+
+    public boolean isClickable(WebElement element, WebDriver driver) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver,5);
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
 }
