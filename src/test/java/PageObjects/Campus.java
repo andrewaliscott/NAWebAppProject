@@ -1,4 +1,6 @@
 package PageObjects;
 
-public class Campus {
+import NauWebProject.Base;
+
+public class Campus extends Base {
 }

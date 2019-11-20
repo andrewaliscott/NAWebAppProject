@@ -12,7 +12,7 @@ public class SeleniumUtil {
     public static Actions actions;
 
     public void goToPage(String url) throws IOException {
-        Driver.getDriver().get(Driver.prop(url));
+        Driver.getDriver().get(Driver.getProp(url));
     }
 
     public WebElement findElement(By locator) {
