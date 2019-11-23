@@ -47,7 +47,7 @@ public class SeleniumUtil {
     }
 
     public List<WebElement> findElements(By locator) {
-        return Driver.driver.findElements(locator);
+        return Driver.getDriver().findElements(locator);
     }
 
     public Actions getActions() {
@@ -62,9 +62,9 @@ public class SeleniumUtil {
         return new WebDriverWait(Driver.getDriver(),10);
     }
 
-    public boolean isClickable(WebElement element, WebDriver driver) {
+    public boolean isClickable(WebElement element) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver,5);
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(),5);
             wait.until(ExpectedConditions.elementToBeClickable(element));
             return true;
         }
