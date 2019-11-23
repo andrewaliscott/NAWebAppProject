@@ -7,12 +7,12 @@ import NauWebProject.Driver;
 
 public class Hook extends Base {
 
-    @Before
+    @Before ("@US001")
     public void beforeTest() {
         Driver.setDriver();
     }
 
-    @After
+    @After("@US001")
     public void afterTest() {
         Driver.closeDriver();
     }

@@ -10,7 +10,8 @@ import java.util.Properties;
 
 public class Driver {
 
-    private static WebDriver driver;
+    public static WebDriver driver;
+    public static Properties prop;
 
     public static WebDriver getDriver() {
         if(driver==null) {
@@ -34,7 +35,7 @@ public class Driver {
     }
 
     public static String getProp(String url) throws IOException {
-        Properties prop = new Properties();
+        prop = new Properties();
         FileInputStream fis=new FileInputStream("src/test/java/NauWebProject/global.properties");
         prop.load(fis);
         return prop.getProperty(url);
