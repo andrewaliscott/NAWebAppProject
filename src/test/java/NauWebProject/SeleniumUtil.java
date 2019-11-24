@@ -74,4 +74,10 @@ public class SeleniumUtil {
             return false;
         }
     }
+    public String getAttribute(By element, String elementAttribute ){
+        return findElement(element).getAttribute(elementAttribute);
+    }
+    public String getCSSvalue(By element, String CSSValue){
+        return findElement(element).getCssValue(CSSValue);
+    }
 }
