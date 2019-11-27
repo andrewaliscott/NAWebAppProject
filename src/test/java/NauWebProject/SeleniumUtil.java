@@ -2,14 +2,16 @@ package NauWebProject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class SeleniumUtil {
 
@@ -72,4 +74,29 @@ public class SeleniumUtil {
             return false;
         }
     }
+    public String getAttribute(By element, String elementAttribute ){
+
+        return findElement(element).getAttribute(elementAttribute);
+    }
+
+    public String getCSSValue(By element, String CSSValue){
+        return findElement(element).getCssValue(CSSValue);
+    }
+
+    public void getThread (int milliSecond) throws InterruptedException {
+        Thread.sleep(milliSecond);
+    }
+
+    public List<String> getListMultiplePage() { //multiple page get pages and Set but to use i need in List
+
+        Set<String> id=Driver.getDriver().getWindowHandles();
+        List<String> listMultiplePage=new ArrayList<>();
+        listMultiplePage.addAll(id);
+        return listMultiplePage;
+    }
+
+    public Select getSelect(By element){
+        return new Select(Driver.getDriver().findElement(element));
+    }
+
 }
