@@ -30,15 +30,7 @@ public class HYMain extends Base {
 
     @Then("^User should navigate to \"([^\"]*)\" page$")
     public void user_should_navigate_to_page(String arg1) throws Throwable {
-
-        if(arg1.equals("search")) {
-            System.out.println("actual : " + seleniumUtil.getUrl());
-            System.out.println("expected ending: " + search);
-            Assert.assertTrue(seleniumUtil.getUrl().contains(search));
-        }
-
-        System.out.println("actual : " + seleniumUtil.getUrl());
-        System.out.println("expected : " + Driver.getProp(arg1));
+        if(arg1.equals("search")) { Assert.assertTrue(seleniumUtil.getUrl().contains(search)); }
         Assert.assertEquals(Driver.getProp(arg1),seleniumUtil.getUrl());
     }
 
@@ -48,8 +40,8 @@ public class HYMain extends Base {
         main.signInPortal(obj.get(0).get(0), obj.get(0).get(1));
     }
 
-    @When("^User sees \"([^\"]*)\" box on right side of menu bar$")
-    public void user_sees_box_on_right_side_of_menu_bar(String arg1) {
+    @When("^User sees search box on right side of menu bar$")
+    public void user_sees_search_box_on_right_side_of_menu_bar() {
 
     }
 
@@ -74,8 +66,6 @@ public class HYMain extends Base {
         main.verifyLogo();
     }
 
-
-
     @Then("^Color of \"([^\"]*)\" title should change$")
     public void color_of_title_should_change(String arg1) {
         main.verifyColor(arg1);
@@ -94,15 +84,13 @@ public class HYMain extends Base {
     @Then("^Submenus should be displayed under \"([^\"]*)\" title$")
     public void submenus_should_be_displayed_under_title(String arg1) {
         main.submenusIsDisplayed(arg1);
-
     }
 
 
     /*
     @When("^User hover on \"([^\"]*)\" button$")
     public void user_hover_on_button(String arg1) throws Throwable {
-        //main.verifyColor(arg1);
-        //main.mouseOver(arg1);
+        main.mouseOver(arg1);
     }
 
     @Then("^Color of \"([^\"]*)\" button should change$")

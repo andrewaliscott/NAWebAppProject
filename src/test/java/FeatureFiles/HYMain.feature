@@ -51,7 +51,7 @@ Feature: HY-Main Page Functionality
   @Test
   Scenario: HY-Main-US06 Verifying location of Search Input Box in main page
     Given User navigates to "main" page
-    When User sees "search" box on right side of menu bar
+    When User sees search box on right side of menu bar
     Then Search box should hold watermark
 
   @Test
