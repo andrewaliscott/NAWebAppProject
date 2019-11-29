@@ -48,6 +48,11 @@ public class SeleniumUtil {
         return findElement(locator).isDisplayed();
     }
 
+    public boolean isDisplayed(WebElement element) {
+        return element.isDisplayed();
+    }
+
+
     public List<WebElement> findElements(By locator) {
         return Driver.getDriver().findElements(locator);
     }
@@ -77,6 +82,11 @@ public class SeleniumUtil {
     public String getAttribute(By element, String elementAttribute ){
 
         return findElement(element).getAttribute(elementAttribute);
+    }
+
+    public String getAttribute(WebElement element, String elementAttribute ){
+
+        return element.getAttribute(elementAttribute);
     }
 
     public String getCSSValue(By element, String CSSValue){

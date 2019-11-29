@@ -12,13 +12,16 @@ public class Hook extends Base {
     @Before
     public void beforeTest() throws IOException {
         Driver.setDriver();
-        seleniumUtil.goToPage("main");
+        //seleniumUtil.goToPage("main");
         Driver.getDriver().manage().window().maximize();
     }
 
-    @After
+    /*@After
     public void afterTest() {
         Driver.closeDriver();
     }
+
+     */
+
 
 }

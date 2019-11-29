@@ -2,6 +2,7 @@ package PageObjects;
 
 import NauWebProject.Base;
 import NauWebProject.Driver;
+import cucumber.api.DataTable;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,8 @@ import java.util.*;
 public class Main extends Base {
 
     private String color = "";
+
+    private By galleryL = By.xpath("//rs-sbg[contains(@src,'http')]");
 
     private By requestL = By.xpath("//span[text()='Request Info']/..");
     private By applyL = By.xpath("//span[text()='Apply Now']/..");
@@ -204,9 +207,9 @@ public class Main extends Base {
         }
 
         assert menuL != null;
-        for (Object o : menuL) {
-                seleniumUtil.isDisplayed((By) o);
-            }
+        for (By locator : menuL) {
+            Assert.assertTrue(seleniumUtil.isDisplayed(locator));
+        }
     }
 
     public void clickOn(String locator) {
@@ -220,17 +223,18 @@ public class Main extends Base {
         }
     }
 
-    public void signInPortal(String username, String password) throws IOException, InterruptedException {
+    public void signInPortal(DataTable arg) throws IOException, InterruptedException {
         Set<String> page = Driver.getDriver().getWindowHandles();
         Iterator<String> myWindows = page.iterator();
         String main = myWindows.next();
         String portal = myWindows.next();
         Driver.getDriver().switchTo().window(portal);
 
-        seleniumUtil.sendKeys(portalSign, Driver.getProp(username));
+        List<List<String>> input = arg.raw();
+        seleniumUtil.sendKeys(portalSign, Driver.getProp(input.get(0).get(0)));
         seleniumUtil.enter(portalSign);
         Thread.sleep(1000);
-        seleniumUtil.sendKeys(portalPass,Driver.getProp(password));
+        seleniumUtil.sendKeys(portalPass,Driver.getProp(input.get(0).get(1)));
         seleniumUtil.enter(portalPass);
         Thread.sleep(1000);
         seleniumUtil.click(portalSubmit2);
@@ -249,6 +253,7 @@ public class Main extends Base {
             case "CampusLife" : element = seleniumUtil.findElement(campusL); break;
             case "Students" : element = seleniumUtil.findElement(studentsL); break;
             case "AboutNAU" : element = seleniumUtil.findElement(aboutNauL); break;
+            case "gallery" : element = seleniumUtil.findElement(galleryL); break;
         }
         return element;
     }
@@ -268,6 +273,7 @@ public class Main extends Base {
             case "CampusLife" : locatorL = campusL; break;
             case "Students" : locatorL = studentsL; break;
             case "AboutNAU" : locatorL = aboutNauL; break;
+            case "gallery" : locatorL = galleryL; break;
         }
         return locatorL;
     }
@@ -281,6 +287,9 @@ public class Main extends Base {
         System.out.println("input value : "+text);
     }
 
+    public void verifySearchBox(){
+        Assert.assertTrue(seleniumUtil.isDisplayed(searchL));
+    }
     public void verifyWatermark() {
         Assert.assertEquals(seleniumUtil.findElement(searchL).getAttribute("placeholder"),"Search...");
     }
@@ -312,5 +321,24 @@ public class Main extends Base {
     public void verifyLink(String locator) {
         WebElement element = getElement(locator);
         Assert.assertTrue(seleniumUtil.isClickable(element));
+    }
+
+    public void verifyGallery(String locator) throws InterruptedException {
+        List<WebElement> images = seleniumUtil.findElements(getLocator(locator));
+        for (WebElement image : images) {
+            seleniumUtil.isDisplayed(image);
+            System.out.println(seleniumUtil.getAttribute(image,"src"));
+            seleniumUtil.getThread(3000);
+        }
+    }
+
+    public void costco() throws IOException {
+        Driver.getDriver().get("https://www.costco.com");
+        seleniumUtil.waitFor();
+        seleniumUtil.click(By.cssSelector("#header_sign_in"));
+        Driver.getDriver().findElement(By.cssSelector("#logonId")).sendKeys("hakkiyaz@yahoo.com");
+        Driver.getDriver().findElement(By.cssSelector("#logonPassword")).sendKeys("Costco44");
+        seleniumUtil.click(By.cssSelector("input[type='submit'][class='primary']"));
+
     }
 }

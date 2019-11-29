@@ -10,7 +10,6 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 
 import java.io.IOException;
-import java.util.List;
 
 public class HYMain extends Base {
 
@@ -36,13 +35,12 @@ public class HYMain extends Base {
 
     @When("^User will sign in with following information$")
     public void user_will_sign_in_with_following_information(DataTable arg1) throws Throwable {
-        List<List<String>> obj = arg1.raw();
-        main.signInPortal(obj.get(0).get(0), obj.get(0).get(1));
+        main.signInPortal(arg1);
     }
 
     @When("^User sees search box on right side of menu bar$")
     public void user_sees_search_box_on_right_side_of_menu_bar() {
-
+        main.verifySearchBox();
     }
 
     @Then("^Search box should hold watermark$")
@@ -86,6 +84,11 @@ public class HYMain extends Base {
         main.submenusIsDisplayed(arg1);
     }
 
+    @Then("^Image \"([^\"]*)\" should slide automatically$")
+    public void image_should_slide_automatically(String arg1) throws Throwable {
+        main.costco();
+        //main.verifyGallery(arg1);
+    }
 
     /*
     @When("^User hover on \"([^\"]*)\" button$")
