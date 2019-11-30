@@ -86,8 +86,7 @@ public class HYMain extends Base {
 
     @Then("^Image \"([^\"]*)\" should slide automatically$")
     public void image_should_slide_automatically(String arg1) throws Throwable {
-        main.costco();
-        //main.verifyGallery(arg1);
+        main.verifyGallery(arg1);
     }
 
     /*
