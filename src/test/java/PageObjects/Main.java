@@ -331,14 +331,4 @@ public class Main extends Base {
             seleniumUtil.getThread(3000);
         }
     }
-
-    public void costco() throws IOException {
-        Driver.getDriver().get("https://www.costco.com");
-        seleniumUtil.waitFor();
-        seleniumUtil.click(By.cssSelector("#header_sign_in"));
-        Driver.getDriver().findElement(By.cssSelector("#logonId")).sendKeys("hakkiyaz@yahoo.com");
-        Driver.getDriver().findElement(By.cssSelector("#logonPassword")).sendKeys("Costco44");
-        seleniumUtil.click(By.cssSelector("input[type='submit'][class='primary']"));
-
-    }
 }
